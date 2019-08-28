@@ -13,8 +13,7 @@
     "express": "4.13.3"
   },
   "engines": {
-    "node": "12.7.6",
-    "npm": "6.9.0"
+    "node": "12.6.0"
   },
   "keywords": [
     "node",
