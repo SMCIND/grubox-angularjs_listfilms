@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+        <title>GruBox : Basic Films List</title>
+        <base href="/">
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/public/stylesheets/main.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="/css/bootstrap-theme.min.css"/>
+        <link rel="stylesheet" href="/css/app.css"/>
+
+</head>
+<body ng-app="App" >
+    <div ng-controller="MyController">
+        <div class="container ">
+                <h5 class="card-title text-center font-weight-bold">BASIC FILMS LIST</h5>
+                <div class="row">
+                    <label class="pt-2">Sort By:</label>
+                    <div class="col-sm-2 pb-3"><button class="btn btn-light btn-block" type="button" ng-click="sort('rt_score')" ng-init="sortKey=='rt_score'">Rating</button></div>
+                    <div class="col-sm-2 mr-auto pb-3"><button class="btn btn-light btn-block" type="button" ng-click="sort('release_year')" ng-init="sortKey=='release_year'">Release Year</button></div>
+                    <label  class="pt-2">Filter By:</label>
+                    <form class="form-inline">
+                            <div class="col-sm-3 pb-3"><input type="text" ng-model="search" class="form-control" placeholder="Enter keywords here"></div>
+                    </form>
+                </div>
+                <div class="row">
+                <table class="table table-hover table-striped table-bordered table-condensed mx-auto">
+                <thead>
+                      <tr class=" text-center">
+                          <th id="title" ng-click="sort('title')">
+                                <span class="glyphicon sort-icon" ng-show="sortKey=='title'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>  
+                            Title</th>
+                          <th id="description" ng-click="sort('description')">
+                                <span class="glyphicon sort-icon" ng-show="sortKey=='description'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>   
+                            Description</th>
+                          <th id="release_year" ng-click="sort('release_year')">
+                                <span class="glyphicon sort-icon" ng-show="sortKey=='release_year'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>   
+                            Release Year</th>
+                          <th id="director" ng-click="sort('director')" >
+                                <span class="glyphicon sort-icon" ng-show="sortKey=='director'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>   
+                            Director</th>
+                          <th id="producer" ng-click="sort('producer')">
+                                <span class="glyphicon sort-icon" ng-show="sortKey=='producer'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>   
+                            Producer</th>
+                          <th id="rt_score" ng-click="sort('rt_score')">
+                                <span class="glyphicon sort-icon" ng-show="sortKey=='rt_score'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>   
+                            Rating</th>
+                      </tr>
+                  </thead>
+               <tbody ng-repeat="film in films|orderBy:sortKey:reverse|filter:search">
+                  <tr class="t-row">
+                  <td>{{film.title}}</td>
+                  <td>{{film.description}}</td>
+                  <td>{{film.release_date}}</td>
+                  <td>{{film.director}}</td>
+                  <td>{{film.producer}}</td>
+                  <td>{{film.rt_score}}</td>
+                  </tr>
+                </tbody>
+                </table>
+                </div>
+                
+            </div>
+    </div>
+
+<script type="text/javascript" src="/lib/jquery-1.12.0.js"></script>
+<script type="text/javascript" src="/lib/underscore-1.4.4.min.js"></script>
+<script type="text/javascript" src="/lib/bootstrap.min.js"></script>
+<script type="text/javascript" src="/lib/angular/angular.js"></script>
+<script type="text/javascript" src="/lib/angular/angular-route.js"></script>
+
+<script type="text/javascript" src="/js/app.js"></script>
+</body>
+</html>~

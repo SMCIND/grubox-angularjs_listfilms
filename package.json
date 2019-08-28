@@ -1,0 +1,30 @@
+{
+  "name": "gru-box task",
+  "version": "0.1.5",
+  "author": "smriti changulani",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "mongoose": ">=4.1.11",
+    "body-parser": "1.13.1",
+    "express": "4.13.3"
+  },
+  "engines": {
+    "node": "0.12.7"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express",
+    "angularjs",
+    "mongodb",
+    "barebone",
+    "skeleton",
+    "mongoose",
+    "bootstrap"
+  ],
+  "license": "MIT"
+}
