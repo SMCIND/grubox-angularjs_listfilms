@@ -14,7 +14,7 @@ app.use(express.static(rootPath + '/app'));
 app.use(express.static(__dirname + '/app'));
 app.use(express.static(__dirname + '/app/assets/images'));
 
-app.get('/*', function (req, res) { res.sendFile(path.resolve('app/index.html')); });
+app.get('/', function (req, res) { res.sendFile(path.resolve('app/index.html')); });
 
 //mongoose.connect('mongodb://username:password@something.mongolab.com:port/db');
 
