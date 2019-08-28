@@ -12,7 +12,6 @@ app.use(bodyParser.json());
 
 app.use(express.static(rootPath + '/app'));
 app.use(express.static(__dirname + '/app'));
-app.use(express.static(__dirname + '/app/assets/images'));
 
 app.get('/', function (req, res) { res.sendFile(path.resolve('app/index.html')); });
 

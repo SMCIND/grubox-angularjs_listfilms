@@ -7,7 +7,7 @@ angular.module("App", [])
             $scope.films = response.data;
         });
     $scope.sort = function(keyname){
-        $scope.sortKey = keyname;   //set the sortKey to the param passed
-        $scope.reverse = !$scope.reverse; //if true make it false and vice versa
+        $scope.sortKey = keyname;   
+        $scope.reverse = !$scope.reverse;
     }
 });
