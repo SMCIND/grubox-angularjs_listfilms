@@ -13,31 +13,31 @@
         <link rel="stylesheet" href="/css/app.css"/>
 
 </head>
-<body ng-app="App" >
+<body ng-app="App" class="bg-dark text-light">
     <div ng-controller="MyController">
-        <div class="container ">
+        <div class="container">
                 <h5 class="card-title text-center font-weight-bold">BASIC FILMS LIST</h5>
                 <div class="row">
                     <label class="pt-2">Sort By:</label>
                     <div class="col-sm-2 pb-3"><button class="btn btn-light btn-block" type="button" ng-click="sort('rt_score')" ng-init="sortKey=='rt_score'">Rating</button></div>
-                    <div class="col-sm-2 mr-auto pb-3"><button class="btn btn-light btn-block" type="button" ng-click="sort('release_year')" ng-init="sortKey=='release_year'">Release Year</button></div>
+                    <div class="col-sm-2 mr-auto pb-3"><button class="btn btn-light btn-block" type="button" ng-click="sort('release_date')" ng-init="sortKey=='releasedate'">Release Year</button></div>
                     <label  class="pt-2">Filter By:</label>
                     <form class="form-inline">
-                            <div class="col-sm-3 pb-3"><input type="text" ng-model="search" class="form-control" placeholder="Enter keywords here"></div>
+                            <div class="col-sm-3 pb-3"><input type="text" id="search_input" ng-model="search" class="form-control" placeholder="Enter title or director here" ng-keypress="filter_title_director();"></div>
                     </form>
                 </div>
-                <div class="row">
-                <table class="table table-hover table-striped table-bordered table-condensed mx-auto">
-                <thead>
-                      <tr class=" text-center">
+                <div class="row table-row">
+                <table class="table table-hover table-striped table-bordered table-condensed mx-auto" >
+                <thead class="bg-dark text-light">
+                      <tr class="text-center">
                           <th id="title" ng-click="sort('title')">
                                 <span class="glyphicon sort-icon" ng-show="sortKey=='title'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>  
                             Title</th>
-                          <th id="description" ng-click="sort('description')">
+                          <th id="description" ng-click="sort('description')" class="wd100">
                                 <span class="glyphicon sort-icon" ng-show="sortKey=='description'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>   
                             Description</th>
-                          <th id="release_year" ng-click="sort('release_year')">
-                                <span class="glyphicon sort-icon" ng-show="sortKey=='release_year'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>   
+                          <th id="release_year" ng-click="sort('release_date')">
+                                <span class="glyphicon sort-icon" ng-show="sortKey=='release_date'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>   
                             Release Year</th>
                           <th id="director" ng-click="sort('director')" >
                                 <span class="glyphicon sort-icon" ng-show="sortKey=='director'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>   
@@ -50,10 +50,10 @@
                             Rating</th>
                       </tr>
                   </thead>
-               <tbody ng-repeat="film in films|orderBy:sortKey:reverse|filter:search">
-                  <tr class="t-row">
+               <tbody ng-repeat="film in films|orderBy:sortKey:reverse | limitTo:totalDisplayed">
+                  <tr class="t-row" style="height: 25%;">
                   <td>{{film.title}}</td>
-                  <td>{{film.description}}</td>
+                  <td class="show_text"><div class="iffyTip wd100" ng-mouseenter="loadText();">{{film.description}}</div></td>
                   <td>{{film.release_date}}</td>
                   <td>{{film.director}}</td>
                   <td>{{film.producer}}</td>
@@ -61,17 +61,34 @@
                   </tr>
                 </tbody>
                 </table>
+                <button class="btn btn-outline-light mx-auto" ng-click="loadMore()" ng-show="films.length>5">Load more</button>
+                <div class="row text-light font-weight-bold" ng-if="films.length === 0">
+                    <div class="col-sm-12 mx-auto">No Results Found</div>
+                </div>
                 </div>
                 
             </div>
     </div>
 
-<script type="text/javascript" src="/lib/jquery-1.12.0.js"></script>
-<script type="text/javascript" src="/lib/underscore-1.4.4.min.js"></script>
-<script type="text/javascript" src="/lib/bootstrap.min.js"></script>
-<script type="text/javascript" src="/lib/angular/angular.js"></script>
-<script type="text/javascript" src="/lib/angular/angular-route.js"></script>
-
-<script type="text/javascript" src="/js/app.js"></script>
 </body>
-</html>~
+
+<script type="text/javascript" src="lib/jquery-1.12.0.js"></script>
+<script type="text/javascript" src="lib/bootstrap.js"></script>
+<script type="text/javascript" src="lib/bootstrap.min.js"></script>
+<script type="text/javascript" src="lib/underscore-1.4.4.min.js"></script>
+<script type="text/javascript" src="lib/angular/angular.js"></script>
+<script type="text/javascript" src="lib/angular/angular-route.js"></script>
+<script>
+        $(document).on('mouseenter', ".iffyTip", function (){
+              var $this = $(this);
+              if (this.offsetWidth < this.scrollWidth && !$this.attr('title')) {
+                  $this.tooltip({
+                      title: $this.text(),
+                      placement: "bottom"
+                  });
+                  $this.tooltip('show');
+              }
+          });
+        </script>
+<script type="text/javascript" src="/js/app.js"></script>
+</html>

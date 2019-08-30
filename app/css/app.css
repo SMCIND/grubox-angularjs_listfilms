@@ -4,6 +4,39 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
 }
-.t-row{
-    height: 3em;
+th{
+    width:15%;
+    text-align: center;
+    white-space:nowrap; 
+    overflow:hidden;
+} 
+th :nth-child(2){
+    width: 40%;
 }
+.show_text{
+    height: 5%;
+    white-space:wrap; 
+    overflow:hidden;
+}
+.show_text:hover {
+   overflow:visible;
+}
+h5{
+    font-size:3em;
+    padding: 6%;
+}
+.table-row{
+    padding:2%;
+    border-radius: 5rem;
+}
+
+.iffyTip {
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow: ellipsis;
+}
+.wd100 {
+    width:250px;
+    height:50px;
+}
+
