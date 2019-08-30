@@ -19,8 +19,8 @@
                 <h5 class="card-title text-center font-weight-bold">BASIC FILMS LIST</h5>
                 <div class="row">
                     <label class="pt-2">Sort By:</label>
-                    <div class="col-sm-2 pb-3"><button class="btn btn-light btn-block" type="button" ng-click="sort('rt_score')" ng-init="sortKey=='rt_score'">Rating</button></div>
-                    <div class="col-sm-2 mr-auto pb-3"><button class="btn btn-light btn-block" type="button" ng-click="sort('release_date')" ng-init="sortKey=='releasedate'">Release Year</button></div>
+                    <div class="col-sm-2 pb-3"><button class="btn btn-dark btn-block" type="button" ng-click="sort('rt_score')" ng-init="sortKey=='rt_score'">Rating</button></div>
+                    <div class="col-sm-2 mr-auto pb-3"><button class="btn btn-dark btn-block" type="button" ng-click="sort('release_date')" ng-init="sortKey=='releasedate'">Release Year</button></div>
                     <label  class="pt-2">Filter By:</label>
                     <form class="form-inline">
                             <div class="col-sm-3 pb-3"><input type="text" id="search_input" ng-model="search" class="form-control" placeholder="Enter title or director here" ng-keyup="filter_title_director();"></div>
@@ -61,7 +61,7 @@
                   </tr>
                 </tbody>
                 </table>
-                <button class="btn btn-outline-dark mx-auto" ng-click="loadMore()" ng-show="films.length>5 && totalDisplayed<20" >Load more</button>
+                <button class="btn btn-dark mx-auto" ng-click="loadMore()" ng-show="films.length>5 && totalDisplayed<20" >Load more</button>
                 <div class="row text-dark font-weight-bold" ng-if="films.length === 0">
                     <div class="col-sm-12 mx-auto">No Results Found</div>
                 </div>
